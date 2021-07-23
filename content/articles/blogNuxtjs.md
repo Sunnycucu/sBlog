@@ -1,17 +1,21 @@
 ---
-title: HTML, CSS, Javascript
-description: Learning how to use @nuxt/content to create a blog
+title: Nuxt.js content Blog 
+description: Learning how to use nuxt/content to create a blog
 img: first-blog-post.jpg
 alt: my first blog post
 author:
   name: Benjamin
   bio: All about Benjamin
-
 ---
 
-# nuxt/content module
+
+
+
+
+## nuxt/content module
 writes in content/ directory and fetch Markdown, JSON, YAML, XML,
 and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.
+
 
 - 시작하기전에...
   - npm install @nuxt/content
@@ -19,10 +23,10 @@ and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.
 - content/articles directory 안에 md file들을 넣어준다
 
 ### content display
-- we can use dynamic page by prefixing the page with an underscore('_')
-- example : created _slug.vue
+- we can use dynamic page by prefixing the page with an underscore('\_')
+- example : created \_slug.vue
 - use the params.slug variable provided by vue router to get the name of each article
-- have access to our contenct through the context by using the variable $content  
+- have access to our content through the context by using the variable $content  
 - use asycnData in our page component to fetch our article content before the page has been rendered.
 - need to know wich article to fetch -> params.slug(avaiable through the context)
 - fetched our content using the await folled by $content. (pass into content what we want to fetch, which is the article folder)
@@ -64,7 +68,7 @@ and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.
 ```
 <pre> {{ article }} </pre>
 ```
-##### if we want to write nicely format the updated date for an article
+### if we want to write nicely format the updated date for an article
 ```
 methods: {
 formatDate(date) {
@@ -122,49 +126,7 @@ alt: my first blog post
   }
 </style>
 ```
-### Adding an icon to our headings anchor
-- irst add the svg to your assets folder
-```
-.icon.icon-link {
-  background-image: url('~assets/svg/icon-hashtag.svg');
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-size: 20px 20px;
-}
-```
-### Add a table of contents
-- if we add headings to our blog post(e.g ## this is heading), we can see these inside the toc array with an id, a depth and the text.
-- As we have access to the toc id and text we can loop over these and print each one out and use the <NuxtLink> component to link to the id of the section we want to link to.
-```
-<nav>
-  <ul>
-    <li v-for="link of article.toc" :key="link.id">
-      <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
-    </li>
-  </ul>
-</nav>
-```
 
-### use HTML in the markdown files
- - we can add this to our markdown files. 
-```
-<div class="p-4 mb-4 text-white bg-blue-500">
-  This is HTML inside markdown that has a class of note
-</div>
-```
-### Adding a Vue component
-- if we are re-using components, we can create one with the styles we need and pass in the text as a slot.
-- in nuxt.config.js
-```
-export default {
-components: true
-}
-```
-- auto importing compoenents will not work for <nuxt-content> unless we globally register them by adding a global folder inside the components folder.
-```
-mkdir components/global
-```
 - for an example, we can create our InfoBox compoenent(InfoBox.vue)
 ```
 <template>
@@ -183,9 +145,151 @@ mkdir components/global
 ```
 
 ### Adding an Author compoenent with props
+- in markdown page,
+```
+---
+author:
+name: Benjamin
+bio: All about Benjamin
+image: https://images.unsplash.com/.....
+---
+```
+
+- can create Author component
+```
+<template>
+  <div>
+    <img :src="author.image" />
+    <div>
+      <h4>Author</h4>
+      <p>{{ author.name }}</p>
+      <p>{{ author.bio }}</p>
+    </div>
+  </div>
+</template>
+```
+- Then in our script tag we can add our props of author which is an object and set required to true.
+```
+<script>
+  export default {
+    props: {
+      author: {
+        type: Object,
+        required: true
+      }
+    }
+  }
+</script>
+```
+
+- To use the component we will need to add it to our markdown and pass in our props.
+```
+<author :author="author"></author>
+```
+- in \_slug.vue for example, we can use like : 
+```
+<author :author="article.author" />
+```
 
 
 ### Creating a previous and next component
+- In this component we use a v-if inside our NuxtLink component to see if there is a previous blog post and if there is we add a link to it.
+- In our component,
+```
+<template>
+  <div class="flex justify-between">
+    <NuxtLink
+      v-if="prev"
+      :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
+      class="font-bold text-primary hover:underline"
+    >
+      {{ prev.title }}
+    </NuxtLink>
+    <span v-else>&nbsp;</span>
+    <NuxtLink
+      v-if="next"
+      :to="{ name: 'blog-slug', params: { slug: next.slug } }"
+      class="font-bold hover:underline"
+    >
+      {{ next.title }}
+    </NuxtLink>
+    <span v-else>&nbsp;</span>
+  </div>
+</template>
+```
+- In our component we pass the props prev and next to makes them available to us on our blog post page.
+```
+<script>
+  export default {
+    props: {
+      prev: {
+        type: Object,
+        default: () => null
+      },
+      next: {
+        type: Object,
+        default: () => null
+      }
+    }
+  }
+</script>
+```
+- now, in our slug.vue, 
+```
+async asyncData({ $content, params }) {
+const article = await $content('articles', params.slug).fetch()
+    const [prev, next] = await $content('articles')
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .surround(params.slug)
+      .fetch()
 
-### List all the blog posts
-- 
+    return {
+      article,
+      prev,
+      next
+    }
+},
+```
+- now we can use our compoenent :
+```
+  <prev-next :prev="prev" :next="next" />
+  ```
+#### List all the blog posts
+- we will make a list of all blog posts in our index.vue
+```
+<script>
+  export default {
+    async asyncData({ $content, params }) {
+      const articles = await $content('articles')
+        .only(['title', 'description', 'img', 'slug', 'author'])
+        .sortBy('createdAt', 'asc')
+        .fetch()
+
+      return {
+        articles
+      }
+    }
+  }
+</script>
+```
+
+```
+<template>
+  <div>
+    <h1>Blog Posts</h1>
+    <ul>
+      <li v-for="article of articles" :key="article.slug">
+        <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
+          <img :src="article.img" />
+          <div>
+            <h2>{{ article.title }}</h2>
+            <p>by {{ article.author.name }}</p>
+            <p>{{ article.description }}</p>
+          </div>
+        </NuxtLink>
+      </li>
+    </ul>
+  </div>
+</template>
+```

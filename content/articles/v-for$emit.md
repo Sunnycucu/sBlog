@@ -36,8 +36,9 @@ author:
 - 부모가 준건 변하게 할수 없다
 - {{ }} 자바 스크립트 해석 공간
 
-
+```
 <Frog :age="age" :frogItems="frogItems" ></Frog>
+```
 - hard coding 으로 만든것 부모에서
 ```
    <div class="water">

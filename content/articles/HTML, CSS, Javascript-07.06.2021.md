@@ -1,7 +1,7 @@
 ---
 title: HTML, CSS, Javascript
 description: Basic knowledge of HTML, CSS, and Javascript
-img: first-blog-post.jpg
+img: /html.jpeg
 alt: my first blog post
 author:
   name: Sunny

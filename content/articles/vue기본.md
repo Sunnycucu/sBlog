@@ -1,7 +1,7 @@
 ---
 title: vue 기본
 description: Learning how to use @nuxt/content to create a blog
-img: first-blog-post.jpg
+img: sampleImage.jpeg
 alt: my first blog post
 author:
   name: Benjamin

@@ -1,7 +1,7 @@
 ---
 title: v-for$emit
 description: Learning how to use @nuxt/content to create a blog
-img: first-blog-post.jpg
+img: /vueLogo.png
 alt: my first blog post
 author:
   name: Benjamin

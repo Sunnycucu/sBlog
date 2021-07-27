@@ -1,6 +1,6 @@
 <template>
 <div class="allContainer">
-  <MainBigImage/>
+  <MainBigImage :article="article"/>
 
   <div class="topInfoContainer">
     <TopTitleInfoBox :article="article"/>
@@ -59,7 +59,11 @@ h1 {
 }
 
 .nuxt-content h1 {
-  font-size : 28px;
+  font-size : 40px;
+}
+
+.nuxt-content {
+  font-size: 20px;
 }
 
 article {

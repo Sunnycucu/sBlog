@@ -1,6 +1,7 @@
 ---
 title: Flexbox
 description: Learning how to use @nuxt/content to create a blog
+img : /flexbox.png
 alt: my first blog post
 author:
   name: Benjamin

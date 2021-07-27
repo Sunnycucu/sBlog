@@ -1,12 +1,15 @@
 <template>
   <div class="imageContainer">
-    <img class="mainImage" src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/60f04ea6038ff89ed11a7c0c_Stop-designing-from-scratch-and-start-designing-with-Webflow-templates_BlogHero-min.jpg" />
+    <img class="mainImage" :src="article.img" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "MainBigImage"
+  name: "MainBigImage",
+  props : {
+    article : Object
+  }
 }
 </script>
 

@@ -13,7 +13,8 @@ export default {
 <style scoped>
 .imageContainer {
   margin-bottom: 50px;
-
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 .mainImage {

@@ -1,19 +1,21 @@
 <template>
-  <div class="flex justify-between">
+  <div class="prevNNext">
+    previous  :
     <NuxtLink
       v-if="prev"
       :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
-      class="font-bold text-primary hover:underline"
+      class="prev"
     >
-      {{ prev.title }}
+     {{ prev.title }}
     </NuxtLink>
     <span v-else>&nbsp;</span>
+    next :
     <NuxtLink
       v-if="next"
       :to="{ name: 'blog-slug', params: { slug: next.slug } }"
-      class="font-bold hover:underline"
+      class="next"
     >
-      {{ next.title }}
+     {{ next.title }}
     </NuxtLink>
     <span v-else>&nbsp;</span>
   </div>
@@ -33,3 +35,13 @@ export default {
   }
 }
 </script>
+<style>
+.prevNNext {
+  border-top: solid black 1px;
+  margin-top: 50px;
+  padding-top : 20px;
+}
+.prev {
+  margin-right: 50px;
+}
+</style>

@@ -45,6 +45,7 @@ export default {
 
 .authorInfoContainer {
   display: flex;
+
 }
 
 </style>

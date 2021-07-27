@@ -1,7 +1,7 @@
 <template>
 <div class="allContainer">
   <MainBigImage/>
-  <AppSearchInput />
+
   <div class="topInfoContainer">
     <TopTitleInfoBox :article="article"/>
     <ExtraInfo :article="article"/>
@@ -10,6 +10,7 @@
     <article>
       <nuxt-content :document="article" />
       <prev-next :prev="prev" :next="next" />
+      <AppSearchInput class="appSearch"/>
     </article>
     <div class="leftSpace"/>
   </div>
@@ -45,19 +46,9 @@ export default {
 </script>
 
 <style>
-/*.nuxt-content h2 {*/
-/*  font-weight: bold;*/
-/*  font-size: 28px;*/
-/*}*/
-/*.nuxt-content h3 {*/
-/*  font-weight: bold;*/
-/*  font-size: 22px;*/
-/*}*/
-/*.nuxt-content p {*/
-/*  margin-bottom: 20px;*/
-/*}*/
-
-
+.allContainer {
+  padding:40px;
+}
 
 h1 {
   font-size: xxx-large;
@@ -67,7 +58,9 @@ h1 {
   display: flex;
 }
 
-
+.nuxt-content h1 {
+  font-size : 28px;
+}
 
 article {
   width: 80%;
@@ -78,5 +71,8 @@ leftSpace {
 .articleContainer {
   display: flex;
 
+}
+.appSearch {
+  margin-top: 30px;
 }
 </style>

@@ -5,7 +5,7 @@ img: /html.jpeg
 alt: my first blog post
 author:
   name: Sunny
-  bio: All about Benjamin
+  bio: University of Washington
 
 ---
 

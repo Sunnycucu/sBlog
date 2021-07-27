@@ -1,7 +1,7 @@
 ---
 title: Nuxt.js content Blog 
 description: Learning how to use nuxt/content to create a blog
-img: hi.jpeg
+img: /blog.jpeg
 alt: my first blog post
 author:
   name: Sunny

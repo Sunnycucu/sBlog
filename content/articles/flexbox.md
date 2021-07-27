@@ -4,8 +4,8 @@ description: Learning how to use @nuxt/content to create a blog
 img : /flexbox.png
 alt: my first blog post
 author:
-  name: Benjamin
-  bio: All about Benjamin
+  name: Sunny
+  bio: University of Washington
 ---
 
 # flexbox

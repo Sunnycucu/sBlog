@@ -13,7 +13,7 @@ author:
 writes in content/ directory and fetch Markdown, JSON, YAML, XML,
 and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.
 
-- 시작하기전에...
+- 시작하기전에....
   - npm install @nuxt/content
   
 - content/articles directory 안에 md file들을 넣어준다

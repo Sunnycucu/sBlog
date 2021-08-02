@@ -1,6 +1,6 @@
 ---
 title: Vue Props
-description: Learning how to use @nuxt/content to create a blog
+description: vue props에 대해서
 img: /vueProps.png
 alt: my first blog post
 author:

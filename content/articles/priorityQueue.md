@@ -1,6 +1,6 @@
 ---
 title: priorityQueue
-description: Learning how to use @nuxt/content to create a blog
+description: priority queue (java)
 img: /pq.jpeg
 alt: my first blog post
 author:

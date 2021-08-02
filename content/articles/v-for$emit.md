@@ -1,6 +1,6 @@
 ---
 title: v-for$emit
-description: Learning how to use @nuxt/content to create a blog
+description: v-for 과 $emit 에대해서
 img: /vueLogo.png
 alt: my first blog post
 author:

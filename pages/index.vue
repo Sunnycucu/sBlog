@@ -14,7 +14,7 @@
           <img class="articleImage" :src="article.img"/>
         </div>
         <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
-          <div>
+          <div class="cardTitle">
             <h2>{{ article.title }}</h2>
             <p>by {{ article.author.name }}</p>
             <p>{{ article.description }}</p>
@@ -46,14 +46,15 @@ export default {
 
 .card {
   display: flex;
-  margin: 70px;
+  margin: 30px;
   width: 40%;
   padding: 15px;
   flex-direction: column;
+  justify-content: center;
 }
 
 .cardContainer {
-  margin: 40px;
+
   display: flex;
   justify-content: center;
   border-top: solid black 1px;
@@ -88,7 +89,8 @@ export default {
 }
 
 .articleImage {
-  width: 650px;
-  height: 350px;
+  width: 450px;
+  height: 250px;
 }
+
 </style>

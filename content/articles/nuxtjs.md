@@ -1,6 +1,6 @@
 ---
 title: Nuxt.js
-description: Learning how to use @nuxt/content to create a blog
+description: Nuxt.js 입문
 img: /nuxt.png
 alt: my first blog post
 author:

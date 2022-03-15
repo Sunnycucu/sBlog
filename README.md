@@ -6,6 +6,9 @@
 # install dependencies
 $ npm install
 
+#if @nuxt/content is missing,
+$npm install @nuxt/content
+
 # serve with hot reload at localhost:3000
 $ npm run dev
 
